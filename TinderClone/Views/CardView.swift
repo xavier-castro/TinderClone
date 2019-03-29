@@ -27,18 +27,26 @@ class CardView: UIView {
 	@objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
 		switch gesture.state {
 		case .changed:
-			let translation = gesture.translation(in: nil)
-			self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+			handleChanged(gesture)
 		case .ended:
-			UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-				self.transform = .identity
-			}) { (_) in
-
-			}
+			handleEnded()
 		default:
 			()
 		}
 
+	}
+
+	fileprivate func handleChanged(_ gesture: UIPanGestureRecognizer) {
+		let translation = gesture.translation(in: nil)
+		self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+	}
+
+	fileprivate func handleEnded() {
+		UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+			self.transform = .identity
+		}) { (_) in
+
+		}
 	}
 
 	required init?(coder aDecoder: NSCoder) {
