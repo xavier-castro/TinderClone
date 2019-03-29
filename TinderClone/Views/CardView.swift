@@ -19,6 +19,26 @@ class CardView: UIView {
 
 		addSubview(imageView)
 		imageView.fillSuperview()
+
+		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+		addGestureRecognizer(panGesture)
+	}
+
+	@objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
+		switch gesture.state {
+		case .changed:
+			let translation = gesture.translation(in: nil)
+			self.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+		case .ended:
+			UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+				self.transform = .identity
+			}) { (_) in
+
+			}
+		default:
+			()
+		}
+
 	}
 
 	required init?(coder aDecoder: NSCoder) {
