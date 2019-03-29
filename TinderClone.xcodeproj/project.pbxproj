@@ -13,6 +13,7 @@
 		96D3DBE1224EBB4C002F652E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D3DBE0224EBB4C002F652E /* Assets.xcassets */; };
 		96D3DBE4224EBB4C002F652E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D3DBE2224EBB4C002F652E /* LaunchScreen.storyboard */; };
 		96D3DBEC224EBC36002F652E /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBEB224EBC36002F652E /* Extensions+UIView.swift */; };
+		96D3DBF0224EC1E8002F652E /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBEF224EC1E8002F652E /* HomeBottomControlsStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		96D3DBE3224EBB4C002F652E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96D3DBE5224EBB4C002F652E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96D3DBEB224EBC36002F652E /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		96D3DBEF224EC1E8002F652E /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		96D3DBD8224EBB4B002F652E /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
+				96D3DBEE224EC1BC002F652E /* Views */,
 				96D3DBED224EBDF7002F652E /* Extensions */,
 				96D3DBD9224EBB4B002F652E /* AppDelegate.swift */,
 				96D3DBDB224EBB4B002F652E /* ViewController.swift */,
@@ -73,6 +76,14 @@
 				96D3DBEB224EBC36002F652E /* Extensions+UIView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		96D3DBEE224EC1BC002F652E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96D3DBEF224EC1E8002F652E /* HomeBottomControlsStackView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D3DBDC224EBB4B002F652E /* ViewController.swift in Sources */,
+				96D3DBF0224EC1E8002F652E /* HomeBottomControlsStackView.swift in Sources */,
 				96D3DBDA224EBB4B002F652E /* AppDelegate.swift in Sources */,
 				96D3DBEC224EBC36002F652E /* Extensions+UIView.swift in Sources */,
 			);
