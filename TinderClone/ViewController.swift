@@ -13,15 +13,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let subviews = [UIColor.gray, UIColor.darkGray, UIColor.black].map { (color) -> UIView in
-			let v = UIView()
-			v.backgroundColor = color
-			return v
-		}
-
-		let topStackView = UIStackView(arrangedSubviews: subviews)
-		topStackView.distribution = .fillEqually
-		topStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+		let topStackView = TopNavigationStackView()
 
 		let blueView = UIView()
 		blueView.backgroundColor = .blue
