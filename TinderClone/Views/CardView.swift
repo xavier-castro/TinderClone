@@ -20,33 +20,36 @@ class CardView: UIView {
 
 	fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
 	fileprivate let informationLabel = UILabel()
+	fileprivate let gradientLayer = CAGradientLayer()
 
 	// Configurations
-	fileprivate let threshold: CGFloat = 100
+	fileprivate let threshold: CGFloat = 80
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		setupLayout()
+
+		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+		addGestureRecognizer(panGesture)
+	}
+	fileprivate func setupLayout() {
+		// Custom drawing code
 		layer.cornerRadius = 10
 		clipsToBounds = true
+
 		imageView.contentMode = .scaleAspectFill
 		addSubview(imageView)
 		imageView.fillSuperview()
 
+		// Add a gradient layout
 		setupGradientLayer()
 
 		addSubview(informationLabel)
 		informationLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 16, right: 16))
 
-		informationLabel.text = "TEST NAME TEST NAME AGE"
 		informationLabel.textColor = .white
-		informationLabel.font = UIFont.systemFont(ofSize: 34, weight: .heavy)
 		informationLabel.numberOfLines = 0
-
-		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-		addGestureRecognizer(panGesture)
 	}
-
-	let gradientLayer = CAGradientLayer()
 
 	fileprivate func setupGradientLayer() {
 		// How we can draw a gradient with Swift
@@ -63,6 +66,10 @@ class CardView: UIView {
 
 	@objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
 		switch gesture.state {
+		case .began:
+			superview?.subviews.forEach({ (subview) in
+				subview.layer.removeAllAnimations()
+			})
 		case .changed:
 			handleChanged(gesture)
 		case .ended:
