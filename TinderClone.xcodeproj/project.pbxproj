@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96284E352254459B000DCAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96284E342254459B000DCAFE /* User.swift */; };
 		96D3DBDA224EBB4B002F652E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBD9224EBB4B002F652E /* AppDelegate.swift */; };
-		96D3DBDC224EBB4B002F652E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBDB224EBB4B002F652E /* ViewController.swift */; };
+		96D3DBDC224EBB4B002F652E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBDB224EBB4B002F652E /* HomeController.swift */; };
 		96D3DBDF224EBB4B002F652E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D3DBDD224EBB4B002F652E /* Main.storyboard */; };
 		96D3DBE1224EBB4C002F652E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D3DBE0224EBB4C002F652E /* Assets.xcassets */; };
 		96D3DBE4224EBB4C002F652E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D3DBE2224EBB4C002F652E /* LaunchScreen.storyboard */; };
@@ -19,9 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96284E342254459B000DCAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96D3DBD6224EBB4B002F652E /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D3DBD9224EBB4B002F652E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		96D3DBDB224EBB4B002F652E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		96D3DBDB224EBB4B002F652E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		96D3DBDE224EBB4B002F652E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96D3DBE0224EBB4C002F652E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96D3DBE3224EBB4C002F652E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96284E3322544590000DCAFE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96284E342254459B000DCAFE /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		96D3DBCD224EBB4B002F652E = {
 			isa = PBXGroup;
 			children = (
@@ -62,10 +72,11 @@
 		96D3DBD8224EBB4B002F652E /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
+				96284E3322544590000DCAFE /* Models */,
 				96D3DBEE224EC1BC002F652E /* Views */,
 				96D3DBED224EBDF7002F652E /* Extensions */,
 				96D3DBD9224EBB4B002F652E /* AppDelegate.swift */,
-				96D3DBDB224EBB4B002F652E /* ViewController.swift */,
+				96D3DBDB224EBB4B002F652E /* HomeController.swift */,
 				96D3DBDD224EBB4B002F652E /* Main.storyboard */,
 				96D3DBE0224EBB4C002F652E /* Assets.xcassets */,
 				96D3DBE2224EBB4C002F652E /* LaunchScreen.storyboard */,
@@ -163,12 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96D3DBDC224EBB4B002F652E /* ViewController.swift in Sources */,
+				96D3DBDC224EBB4B002F652E /* HomeController.swift in Sources */,
 				96D3DBF0224EC1E8002F652E /* HomeBottomControlsStackView.swift in Sources */,
 				96D3DBDA224EBB4B002F652E /* AppDelegate.swift in Sources */,
 				96D3DBEC224EBC36002F652E /* Extensions+UIView.swift in Sources */,
 				96D3DBF4224EC9A0002F652E /* CardView.swift in Sources */,
 				96D3DBF2224EC526002F652E /* TopNavigationStackView.swift in Sources */,
+				96284E352254459B000DCAFE /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
