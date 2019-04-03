@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		96284E352254459B000DCAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96284E342254459B000DCAFE /* User.swift */; };
 		96284E39225452C0000DCAFE /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96284E38225452C0000DCAFE /* CardViewModel.swift */; };
+		96284E3B22545821000DCAFE /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96284E3A22545821000DCAFE /* Advertiser.swift */; };
 		96D3DBDA224EBB4B002F652E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBD9224EBB4B002F652E /* AppDelegate.swift */; };
 		96D3DBDC224EBB4B002F652E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBDB224EBB4B002F652E /* HomeController.swift */; };
 		96D3DBDF224EBB4B002F652E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D3DBDD224EBB4B002F652E /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		96284E342254459B000DCAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96284E38225452C0000DCAFE /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		96284E3A22545821000DCAFE /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		96D3DBD6224EBB4B002F652E /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D3DBD9224EBB4B002F652E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96D3DBDB224EBB4B002F652E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				96284E342254459B000DCAFE /* User.swift */,
+				96284E3A22545821000DCAFE /* Advertiser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -90,9 +93,9 @@
 		96D3DBD8224EBB4B002F652E /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
-				96284E37225452B1000DCAFE /* ViewModels */,
 				96284E3322544590000DCAFE /* Models */,
 				96D3DBEE224EC1BC002F652E /* Views */,
+				96284E37225452B1000DCAFE /* ViewModels */,
 				96284E362254520D000DCAFE /* Controllers */,
 				96D3DBED224EBDF7002F652E /* Extensions */,
 				96D3DBD9224EBB4B002F652E /* AppDelegate.swift */,
@@ -195,6 +198,7 @@
 			files = (
 				96D3DBDC224EBB4B002F652E /* HomeController.swift in Sources */,
 				96D3DBF0224EC1E8002F652E /* HomeBottomControlsStackView.swift in Sources */,
+				96284E3B22545821000DCAFE /* Advertiser.swift in Sources */,
 				96D3DBDA224EBB4B002F652E /* AppDelegate.swift in Sources */,
 				96D3DBEC224EBC36002F652E /* Extensions+UIView.swift in Sources */,
 				96284E39225452C0000DCAFE /* CardViewModel.swift in Sources */,
