@@ -17,6 +17,7 @@ class CustomTextField: UITextField {
 		super.init(frame: .zero)
 		layer.cornerRadius = 25
 		backgroundColor = .white
+		clearButtonMode = .whileEditing
 	}
 	
 	override func textRect(forBounds bounds: CGRect) -> CGRect {
