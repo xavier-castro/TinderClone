@@ -83,20 +83,16 @@ class RegistrationController: UIViewController {
 		return button
 	}()
 
+	let registeringHUD = JGProgressHUD(style: .dark)
+
 	@objc fileprivate func handleRegister() {
 		self.handleTapDismiss()
-		guard let email = emailTextField.text else { return }
-		guard let password = passwordTextField.text else { return }
-		Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
-
+		registrationViewModel.bindableIsRegistering.value = true
+		registrationViewModel.performRegistration { [unowned self] (err) in
 			if let err = err {
-				print(err)
 				self.showHUDWithErr(error: err)
 				return
 			}
-
-			self.showHUDWithSuccess()
-
 		}
 	}
 
@@ -109,10 +105,10 @@ class RegistrationController: UIViewController {
 		hud.dismiss(afterDelay: 3)
 	}
 
-	fileprivate func showHUDWithSuccess() {
+	fileprivate func showHUDWithSuccess(text: String) {
 		let hud = JGProgressHUD(style: .dark)
 		hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-		hud.textLabel.text = "Successfully registered!"
+		hud.textLabel.text = text
 		hud.show(in: self.view)
 		hud.dismiss(afterDelay: 3)
 	}
@@ -138,6 +134,15 @@ class RegistrationController: UIViewController {
 		registrationViewModel.bindableImage.bind(observer: { [unowned self] (img) in
 			self.selectPhotoButton.setImage(img?.withRenderingMode(.alwaysOriginal), for: .normal)
 		})
+		registrationViewModel.bindableIsRegistering.bind { [unowned self] (isRegistering) in
+			if isRegistering == true {
+				self.registeringHUD.textLabel.text = "Registering..."
+				self.registeringHUD.show(in: self.view)
+			} else {
+				self.registeringHUD.dismiss()
+				self.showHUDWithSuccess(text: "Successfully Registered!")
+			}
+		}
 	}
 
 	fileprivate func setupNotificationObservers() {
@@ -147,7 +152,7 @@ class RegistrationController: UIViewController {
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		NotificationCenter.default.removeObserver(self) // You'll have a retain cycle
+		//		NotificationCenter.default.removeObserver(self)
 	}
 
 	@objc fileprivate func handleKeyboardWillHide() {
@@ -167,7 +172,6 @@ class RegistrationController: UIViewController {
 	@objc fileprivate func handleKeyboardShow(notification: Notification) {
 		guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 		let keyboardFrame = value.cgRectValue
-		print(keyboardFrame)
 		// Figure out how tall the gap is from the register button to the bottom of the screen
 		let bottomSpace = view.frame.height - overallStackView.frame.origin.y - overallStackView.frame.height
 		let difference = keyboardFrame.height - bottomSpace
