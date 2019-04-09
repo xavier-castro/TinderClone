@@ -25,27 +25,45 @@ class RegistrationViewModel {
 		bindableIsRegistering.value = true
 		Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
 			if let err = err {
+				self.bindableIsRegistering.value = false
 				completion(err)
 				return
 			}
-			let filename = UUID().uuidString
-			let ref = Storage.storage().reference(withPath: "/images/\(filename)")
-			let imageData = self.bindableImage.value?.jpegData(compressionQuality: 0.75) ?? Data()
-			ref.putData(imageData, metadata: nil, completion: { (_, err) in
+			self.saveImageToFirebase(completion: completion)
+		}
+	}
+
+	fileprivate func saveImageToFirebase(completion: @escaping (Error?) -> ()) {
+		let filename = UUID().uuidString
+		let ref = Storage.storage().reference(withPath: "/images/\(filename)")
+		let imageData = self.bindableImage.value?.jpegData(compressionQuality: 0.75) ?? Data()
+		ref.putData(imageData, metadata: nil, completion: { (_, err) in
+			if let err = err {
+				completion(err)
+				return
+			}
+			ref.downloadURL(completion: { (url, err) in
 				if let err = err {
 					completion(err)
 					return
 				}
-				ref.downloadURL(completion: { (url, err) in
-					if let err = err {
-						completion(err)
-						return
-					}
-					self.bindableIsRegistering.value = false
-					print("Download url of our image is:", url?.absoluteString ?? "")
-				})
+				self.bindableIsRegistering.value = false
+				print("Download url of our image is:", url?.absoluteString ?? "")
+				let imageUrl = url?.absoluteString ?? ""
+				self.saveInfoToFirestore(imageUrl: imageUrl, completion: completion)
 			})
-			
+		})
+	}
+
+	fileprivate func saveInfoToFirestore(imageUrl: String, completion: @escaping (Error?) -> ()) {
+		guard let uid = Auth.auth().currentUser?.uid else { return }
+		let docData = ["fullName": fullName ?? "", "uid": uid, "imageUrl1": imageUrl]
+		Firestore.firestore().collection("users").document(uid).setData(docData) { (err) in
+			if let err = err {
+				completion(err)
+				return
+			}
+			completion(nil)
 		}
 	}
 
