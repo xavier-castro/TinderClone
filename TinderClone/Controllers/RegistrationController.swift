@@ -11,6 +11,9 @@ import UIKit
 class RegistrationController: UIViewController {
 
 	// UI Components
+
+	let registrationViewModel = RegistrationViewModel()
+
 	let selectPhotoButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Select Photo", for: .normal)
@@ -25,7 +28,7 @@ class RegistrationController: UIViewController {
 	let fullNameTextField: CustomTextField = {
 		let textField = CustomTextField(padding: 16)
 		textField.placeholder = "Enter full name"
-		textField.backgroundColor = .white
+		textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
 		return textField
 	}()
 
@@ -33,7 +36,7 @@ class RegistrationController: UIViewController {
 		let textField = CustomTextField(padding: 16)
 		textField.placeholder = "Enter email"
 		textField.keyboardType = .emailAddress
-		textField.backgroundColor = .white
+		textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
 		return textField
 	}()
 
@@ -41,7 +44,7 @@ class RegistrationController: UIViewController {
 		let textField = CustomTextField(padding: 16)
 		textField.placeholder = "Enter password"
 		textField.isSecureTextEntry = true
-		textField.backgroundColor = .white
+		textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
 		return textField
 	}()
 
@@ -50,7 +53,9 @@ class RegistrationController: UIViewController {
 		button.setTitle("Register", for: .normal)
 		button.setTitleColor(.white, for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
-		button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
+		button.backgroundColor = .lightGray
+		button.setTitleColor(.gray, for: .disabled)
+		button.isEnabled = false
 		button.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		button.layer.cornerRadius = 22
 		return button
@@ -62,9 +67,24 @@ class RegistrationController: UIViewController {
 		setupLayout()
 		setupNotificationObservers()
 		setupTapGesture()
+		setupRegistrationViewModelObserver()
 	}
 
 	// MARK:- Private
+
+	fileprivate func setupRegistrationViewModelObserver() {
+		registrationViewModel.isFormValidObserver = { [unowned self] (isFormValid) in
+			print("Form is changing, is it valid?", isFormValid)
+			self.registerButton.isEnabled = isFormValid
+			if isFormValid {
+				self.registerButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+				self.registerButton.setTitleColor(.white, for: .normal)
+			} else {
+				self.registerButton.backgroundColor = .lightGray
+				self.registerButton.setTitleColor(.gray, for: .normal)
+			}
+		}
+	}
 
 	fileprivate func setupNotificationObservers() {
 		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -98,6 +118,16 @@ class RegistrationController: UIViewController {
 		let bottomSpace = view.frame.height - overallStackView.frame.origin.y - overallStackView.frame.height
 		let difference = keyboardFrame.height - bottomSpace
 		self.view.transform = CGAffineTransform(translationX: 0, y: -difference - 8)
+	}
+
+	@objc fileprivate func handleTextChange(textField: UITextField) {
+		if textField == fullNameTextField {
+			registrationViewModel.fullName = textField.text
+		} else if textField == emailTextField {
+			registrationViewModel.email = textField.text
+		} else {
+			registrationViewModel.password = textField.text
+		}
 	}
 
 	lazy var verticalStackView: UIStackView = {
