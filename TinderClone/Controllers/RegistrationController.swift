@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import JGProgressHUD
 
 class RegistrationController: UIViewController {
 
@@ -58,8 +60,43 @@ class RegistrationController: UIViewController {
 		button.isEnabled = false
 		button.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		button.layer.cornerRadius = 22
+		button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
 		return button
 	}()
+
+	@objc fileprivate func handleRegister() {
+		self.handleTapDismiss()
+		guard let email = emailTextField.text else { return }
+		guard let password = passwordTextField.text else { return }
+		Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+
+			if let err = err {
+				print(err)
+				self.showHUDWithErr(error: err)
+				return
+			}
+
+			self.showHUDWithSuccess()
+
+		}
+	}
+
+	fileprivate func showHUDWithErr(error: Error) {
+		let hud = JGProgressHUD(style: .dark)
+		hud.textLabel.text = "Failed registration"
+		hud.indicatorView = JGProgressHUDErrorIndicatorView()
+		hud.detailTextLabel.text = error.localizedDescription
+		hud.show(in: self.view)
+		hud.dismiss(afterDelay: 3)
+	}
+
+	fileprivate func showHUDWithSuccess() {
+		let hud = JGProgressHUD(style: .dark)
+		hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+		hud.textLabel.text = "Successfully registered!"
+		hud.show(in: self.view)
+		hud.dismiss(afterDelay: 3)
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -74,7 +111,6 @@ class RegistrationController: UIViewController {
 
 	fileprivate func setupRegistrationViewModelObserver() {
 		registrationViewModel.isFormValidObserver = { [unowned self] (isFormValid) in
-			print("Form is changing, is it valid?", isFormValid)
 			self.registerButton.isEnabled = isFormValid
 			if isFormValid {
 				self.registerButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
@@ -117,7 +153,7 @@ class RegistrationController: UIViewController {
 		// Figure out how tall the gap is from the register button to the bottom of the screen
 		let bottomSpace = view.frame.height - overallStackView.frame.origin.y - overallStackView.frame.height
 		let difference = keyboardFrame.height - bottomSpace
-		self.view.transform = CGAffineTransform(translationX: 0, y: -difference - 8)
+		self.view.transform = CGAffineTransform(translationX: 0, y: -difference - 15)
 	}
 
 	@objc fileprivate func handleTextChange(textField: UITextField) {

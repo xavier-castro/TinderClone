@@ -8,7 +8,9 @@ target 'TinderClone' do
 	# ignore all warnings from all pods
 	inhibit_all_warnings!
 
-  # Pods for TinderClone
+	# Pods for TinderClone
+	pod 'GoogleAppMeasurement', '~> 5.2.0'
+	pod 'Firebase/Core'
 	pod 'Firebase/Firestore’,’~>5.10.0’
 	pod 'Firebase/Auth’,’~>5.10.0’
 	pod 'Firebase/Storage’,’~>5.10.0’
