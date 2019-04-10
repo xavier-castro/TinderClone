@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CardView: UIView {
 
 	var cardViewModel: CardViewModel! {
 		didSet {
 			let imageName = cardViewModel.imageNames.first ?? ""
-			imageView.image = UIImage(named: imageName)
+			if let url = URL(string: imageName) {
+				imageView.sd_setImage(with: url)
+			}
 			informationLabel.attributedText = cardViewModel.attributedString
 			informationLabel.textAlignment = cardViewModel.textAlignment
 
@@ -72,22 +75,16 @@ class CardView: UIView {
 		// Custom drawing code
 		layer.cornerRadius = 10
 		clipsToBounds = true
-
 		setupBarsStackView()
-
 		imageView.contentMode = .scaleAspectFill
 		addSubview(imageView)
 		imageView.fillSuperview()
-
 		setupBarsStackView()
-
 		// Add a gradient layout
 		setupGradientLayer()
-
 		addSubview(informationLabel)
 		informationLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
-			padding: .init(top: 0, left: 16, bottom: 16, right: 16))
-
+								padding: .init(top: 0, left: 16, bottom: 16, right: 16))
 		informationLabel.textColor = .white
 		informationLabel.numberOfLines = 0
 	}
@@ -97,7 +94,7 @@ class CardView: UIView {
 	fileprivate func setupBarsStackView() {
 		addSubview(barsStackView)
 		barsStackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,
-			padding: .init(top: 8, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 4))
+							 padding: .init(top: 8, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 4))
 
 		barsStackView.spacing = 4
 		barsStackView.distribution = .fillEqually
