@@ -11,12 +11,17 @@ import Firebase
 import JGProgressHUD
 import SDWebImage
 
+protocol SettingsControllerDelegate {
+	func didSaveSettings()
+}
+
 class CustomImagePickerController: UIImagePickerController {
 	var imageButton: UIButton?
 }
 
 class SettingsController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+	var delegate: SettingsControllerDelegate?
 	var user: User?
 
 	// Instance Properties
@@ -96,7 +101,6 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
 				print(err)
 				return
 			}
-			// Fetched our user here
 			guard let dictionary = snapshot?.data() else { return }
 			self.user = User(dictionary: dictionary)
 			self.loadUserPhotos()
@@ -127,13 +131,16 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
 	lazy var header: UIView = {
 		let header = UIView()
 		let padding: CGFloat = 16
+
 		header.addSubview(image1Button)
 		image1Button.anchor(top: header.topAnchor, leading: header.leadingAnchor, bottom: header.bottomAnchor, trailing: nil, padding: .init(top: padding, left: padding, bottom: padding, right: 0))
 		image1Button.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.45).isActive = true
+
 		let stackView = UIStackView(arrangedSubviews: [image2Button, image3Button])
 		stackView.axis = .vertical
 		stackView.distribution = .fillEqually
 		stackView.spacing = padding
+
 		header.addSubview(stackView)
 		stackView.anchor(top: header.topAnchor, leading: image1Button.trailingAnchor, bottom: header.bottomAnchor, trailing: header.trailingAnchor, padding: .init(top: padding, left: padding, bottom: padding, right: padding))
 		return header
@@ -214,8 +221,10 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
 			let ageRangeCell = AgeRangeCell(style: .default, reuseIdentifier: nil)
 			ageRangeCell.minSlider.addTarget(self, action: #selector(handleMinAgeChange), for: .valueChanged)
 			ageRangeCell.maxSlider.addTarget(self, action: #selector(handleMaxAgeChange), for: .valueChanged)
-			ageRangeCell.minLabel.text = "\(user?.minSeekingAge ?? -1)"
-			ageRangeCell.maxLabel.text = "\(user?.maxSeekingAge ?? -1)"
+			ageRangeCell.minLabel.text = "Min: \(user?.minSeekingAge ?? -1)"
+			ageRangeCell.maxLabel.text = "Max: \(user?.maxSeekingAge ?? -1)"
+			ageRangeCell.minSlider.value = Float(user?.minSeekingAge ?? -1)
+			ageRangeCell.maxSlider.value = Float(user?.maxSeekingAge ?? -1)
 			return ageRangeCell
 		}
 
@@ -289,6 +298,10 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
 			}
 			print("Finished saving user info")
 			hud.dismiss()
+			self.dismiss(animated: true) {
+				self.delegate?.didSaveSettings()
+				print("Dismissal complete")
+			}
 		}
 	}
 
