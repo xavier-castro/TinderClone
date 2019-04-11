@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C171361CF13B2B039DA9F3D /* Pods_TinderClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEAD9A96E106E90A6754D3F9 /* Pods_TinderClone.framework */; };
+		9607F8E3225FF58C00D3172C /* AgeRangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9607F8E2225FF58C00D3172C /* AgeRangeCell.swift */; };
 		96284E352254459B000DCAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96284E342254459B000DCAFE /* User.swift */; };
 		96284E39225452C0000DCAFE /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96284E38225452C0000DCAFE /* CardViewModel.swift */; };
 		96284E3B22545821000DCAFE /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96284E3A22545821000DCAFE /* Advertiser.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		0CE6404930469EB195BE448B /* Pods-TinderClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderClone.release.xcconfig"; path = "Target Support Files/Pods-TinderClone/Pods-TinderClone.release.xcconfig"; sourceTree = "<group>"; };
+		9607F8E2225FF58C00D3172C /* AgeRangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangeCell.swift; sourceTree = "<group>"; };
 		96284E342254459B000DCAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96284E38225452C0000DCAFE /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		96284E3A22545821000DCAFE /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				96D3DBF3224EC9A0002F652E /* CardView.swift */,
 				964F6BED225D12F4003F635A /* CustomTextField.swift */,
 				967DBFC9225EC8D9006A0153 /* SettingsCell.swift */,
+				9607F8E2225FF58C00D3172C /* AgeRangeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				96D3DBF0224EC1E8002F652E /* HomeBottomControlsStackView.swift in Sources */,
 				96284E3B22545821000DCAFE /* Advertiser.swift in Sources */,
 				96D3DBDA224EBB4B002F652E /* AppDelegate.swift in Sources */,
+				9607F8E3225FF58C00D3172C /* AgeRangeCell.swift in Sources */,
 				96D3DBEC224EBC36002F652E /* Extensions+UIView.swift in Sources */,
 				96284E39225452C0000DCAFE /* CardViewModel.swift in Sources */,
 				96D3DBF4224EC9A0002F652E /* CardView.swift in Sources */,
