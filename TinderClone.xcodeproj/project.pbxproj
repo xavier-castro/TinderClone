@@ -15,6 +15,7 @@
 		964F6BEE225D12F4003F635A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F6BED225D12F4003F635A /* CustomTextField.swift */; };
 		964F6BF0225D2C27003F635A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F6BEF225D2C27003F635A /* RegistrationViewModel.swift */; };
 		967DBFC8225EC05E006A0153 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967DBFC7225EC05E006A0153 /* SettingsController.swift */; };
+		967DBFCA225EC8D9006A0153 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967DBFC9225EC8D9006A0153 /* SettingsCell.swift */; };
 		968C75F6225D37D200EA68B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 968C75F5225D37D200EA68B2 /* GoogleService-Info.plist */; };
 		968C75F8225D450C00EA68B2 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968C75F7225D450C00EA68B2 /* Bindable.swift */; };
 		96D3DBDA224EBB4B002F652E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBD9224EBB4B002F652E /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		964F6BED225D12F4003F635A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		964F6BEF225D2C27003F635A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		967DBFC7225EC05E006A0153 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		967DBFC9225EC8D9006A0153 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		968C75F5225D37D200EA68B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		968C75F7225D450C00EA68B2 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		96D3DBD6224EBB4B002F652E /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				96D3DBF1224EC526002F652E /* TopNavigationStackView.swift */,
 				96D3DBF3224EC9A0002F652E /* CardView.swift */,
 				964F6BED225D12F4003F635A /* CustomTextField.swift */,
+				967DBFC9225EC8D9006A0153 /* SettingsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				96D3DBF2224EC526002F652E /* TopNavigationStackView.swift in Sources */,
 				964F6BEC225D09AE003F635A /* RegistrationController.swift in Sources */,
 				96284E352254459B000DCAFE /* User.swift in Sources */,
+				967DBFCA225EC8D9006A0153 /* SettingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
