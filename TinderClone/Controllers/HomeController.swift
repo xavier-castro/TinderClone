@@ -27,6 +27,15 @@ class HomeController: UIViewController, SettingsControllerDelegate {
 		fetchCurrentUser()
 	}
 
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		if Auth.auth().currentUser == nil {
+			let registrationController = RegistrationController()
+			let navController = UINavigationController(rootViewController: registrationController)
+			present(navController, animated: true)
+		}
+	}
+
 	// MARK:- Fileprivate
 
 	fileprivate func fetchCurrentUser() {

@@ -28,6 +28,8 @@
 		96D3DBF0224EC1E8002F652E /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBEF224EC1E8002F652E /* HomeBottomControlsStackView.swift */; };
 		96D3DBF2224EC526002F652E /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBF1224EC526002F652E /* TopNavigationStackView.swift */; };
 		96D3DBF4224EC9A0002F652E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D3DBF3224EC9A0002F652E /* CardView.swift */; };
+		A8B2B32AE85AA43433310ECA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2B39013503684CB515648 /* LoginViewModel.swift */; };
+		A8B2B5E06D767A595736C65D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2B97AA76872B2F68D3F0C /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		96D3DBEF224EC1E8002F652E /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		96D3DBF1224EC526002F652E /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		96D3DBF3224EC9A0002F652E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		A8B2B39013503684CB515648 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A8B2B97AA76872B2F68D3F0C /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D2E4B8C4A41D6550E3DC7022 /* Pods-TinderClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderClone.debug.xcconfig"; path = "Target Support Files/Pods-TinderClone/Pods-TinderClone.debug.xcconfig"; sourceTree = "<group>"; };
 		FEAD9A96E106E90A6754D3F9 /* Pods_TinderClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -99,6 +103,7 @@
 		96284E362254520D000DCAFE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A8B2B2809B241D6D06C10D2D /* Login */,
 				96D3DBDB224EBB4B002F652E /* HomeController.swift */,
 				964F6BEB225D09AE003F635A /* RegistrationController.swift */,
 				964F6BEF225D2C27003F635A /* RegistrationViewModel.swift */,
@@ -171,6 +176,15 @@
 				9607F8E2225FF58C00D3172C /* AgeRangeCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A8B2B2809B241D6D06C10D2D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A8B2B97AA76872B2F68D3F0C /* LoginController.swift */,
+				A8B2B39013503684CB515648 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +348,8 @@
 				964F6BEC225D09AE003F635A /* RegistrationController.swift in Sources */,
 				96284E352254459B000DCAFE /* User.swift in Sources */,
 				967DBFCA225EC8D9006A0153 /* SettingsCell.swift in Sources */,
+				A8B2B5E06D767A595736C65D /* LoginController.swift in Sources */,
+				A8B2B32AE85AA43433310ECA /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
